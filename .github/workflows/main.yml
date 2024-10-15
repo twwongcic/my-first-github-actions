@@ -3,12 +3,26 @@ name: CI
 on: [ push, pull_request ]
 
 jobs:
-  build:
+  without_env:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Echo MY_FAV_COLOR
+        run: echo "MYFAV_COLOR" is ${{ vars.MY_FAV_COLOR }}"
 
+      - name: Echo Show MY_SECERT
+        run: echo "MY_SECRET is ${{ secrets.MY_SECRET }}"
+
+  with_env:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: dev
+      url: http://example.com
+
+    steps:
+      - name: Echo MYFAV_COLOR
+        run: echo "MY_FAV_COLOR is ${{ vars.MY_FAV_COLO }}"
+
+      - name: Echo Show MY_SECRET
+        run: echo "MY_SECRT is ${{ secrets.MY_SECRET }}"
