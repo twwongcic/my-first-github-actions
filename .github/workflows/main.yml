@@ -8,7 +8,7 @@ jobs:
 
     steps:
       - name: Echo MY_FAV_COLOR
-        run: echo "MYFAV_COLOR" is ${{ vars.MY_FAV_COLOR }}"
+        run: echo "MYFAV_COLOR is ${{ vars.MY_FAV_COLOR }}"
 
       - name: Echo Show MY_SECERT
         run: echo "MY_SECRET is ${{ secrets.MY_SECRET }}"
